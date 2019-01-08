@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Updating state</title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    // Create a Class component that extends the React Component class
+    class BasicComponent extends React.Component {
+
+      constructor(props) {
+        super(props);
+        this.state = {
+          text: 'Hello world',
+          counter: 0
+        };
+        this.onClick = this.onClick.bind(this);
+      }
+
+      onClick() {
+        const counter = this.state.counter + 1;
+        this.setState({
+          counter: counter
+        })
+      }
+
+      render() {
+        return (
+          <div>
+            <h1>{this.state.text}: #{this.state.counter}</h1>
+            <button onClick={this.onClick}>Click to increment</button>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(
+        <BasicComponent />,
+        document.getElementById('root')
+      );
+
+    </script>
+</body>
+
+</html>

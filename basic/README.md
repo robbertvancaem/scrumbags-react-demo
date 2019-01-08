@@ -62,3 +62,5 @@ class BasicComponent extends React.Component {
   }
 }
 ```
+
+Next, let's [update state](./updating-state)
